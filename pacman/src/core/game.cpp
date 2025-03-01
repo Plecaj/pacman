@@ -21,7 +21,7 @@ void Game::run()
 		std::string timeElapsedString = ss.str();
 		ClearBackground(WHITE);
 		BeginDrawing();
-			DrawText(timeElapsedString.c_str(), 600, 800, 12, BLACK);
+			DrawText(timeElapsedString.c_str(), 400, 500, 12, BLACK);
 		EndDrawing();
 	}
 	CloseWindow();
