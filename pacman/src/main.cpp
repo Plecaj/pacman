@@ -1,10 +1,13 @@
+#ifndef PLATFORM_WINDOWS 
 #include <iostream>
+int main() {
+    std::cout << "Game only supports Windows" << std::endl;
+}
+#endif
+
+#include "core/game.h"
 
 int main() {
-#ifndef PLATFORM_WINDOWS  
-    std::cout << "Error: Only Windows is supoported" << std::endl;
-    return 1;
-#else
-    // Rest
-#endif
+    Game game;
+    game.run();
 }
