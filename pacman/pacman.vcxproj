@@ -96,11 +96,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\core\game.cpp" />
+    <ClCompile Include="src\core\inputHandler.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\utils\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\game.h" />
+    <ClInclude Include="src\core\inputHandler.h" />
     <ClInclude Include="src\utils\timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
