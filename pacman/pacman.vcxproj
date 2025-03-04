@@ -95,15 +95,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\core\game.cpp" />
-    <ClCompile Include="src\core\inputHandler.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\utils\timer.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="src\core\entityMenager.h" />
     <ClInclude Include="src\core\game.h" />
     <ClInclude Include="src\core\inputHandler.h" />
+    <ClInclude Include="src\entities\entity.h" />
+    <ClInclude Include="src\entities\ghosts.h" />
+    <ClInclude Include="src\entities\pacman.h" />
+    <ClInclude Include="src\utils\direction.h" />
     <ClInclude Include="src\utils\timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\entityMenager.cpp" />
+    <ClCompile Include="src\core\game.cpp" />
+    <ClCompile Include="src\core\inputHandler.cpp" />
+    <ClCompile Include="src\entities\ghosts.cpp" />
+    <ClCompile Include="src\entities\pacman.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\utils\timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

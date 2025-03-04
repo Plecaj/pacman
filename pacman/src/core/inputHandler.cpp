@@ -2,13 +2,11 @@
 
 #include "raylib.h"
 
-InputHandler::InputHandler()
-{
-	m_lastDirection = Direction::None;
+InputHandler::InputHandler(){
+	m_lastDirection = Direction::Right;
 }
 
-Direction InputHandler::GetDirection()
-{
+Direction InputHandler::getDirection(){
     if (IsKeyDown(KEY_UP)) {
         m_lastDirection = Direction::Up;
     }

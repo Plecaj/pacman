@@ -1,12 +1,21 @@
 #include "game.h"
 
-#include <string>
-#include <sstream>
-
-#include "../utils/timer.h"
+// Core
 #include "inputHandler.h"
+#include "entityMenager.h"
+
+// Utils
+#include "../utils/timer.h"
+
+// Entities
+#include "../entities/entity.h"
+#include "../entities/pacman.h"
+#include "../entities/ghosts.h"
 
 #include "raylib.h"
+
+#include <string>
+#include <sstream>
 
 void Game::run()
 {
@@ -17,29 +26,19 @@ void Game::run()
 	SetTargetFPS(60);
 
 	InputHandler inputHandler;
+	EntityMenager entityMenager;
 
-	Vector2 playerPosition = { 400, 200 };
-	float speed = 2.5f;
+	Vector2 startPosition = { 400.0f, 300.0f };
+	Vector2 startDirection = { 1.0f, 0.0f };
+	Pacman pacman(startPosition, startDirection, 2.0f, &inputHandler);
 
-	Timer timer;
+	entityMenager.addEntity(&pacman);
+
 	while (!WindowShouldClose()) {
-		auto timeElapsed = timer.getElapsedSeconds();
-		std::stringstream ss;
-		ss << timeElapsed;
-		std::string timeElapsedString = ss.str();
-
-		Direction dir = inputHandler.GetDirection();
-		switch (dir) {
-			case Direction::Up: playerPosition.y -= speed; break;
-			case Direction::Down: playerPosition.y += speed; break;
-			case Direction::Left: playerPosition.x -= speed; break;
-			case Direction::Right: playerPosition.x += speed; break;
-		}
-
+		entityMenager.update();
 		ClearBackground(WHITE);
 		BeginDrawing();
-			DrawText(timeElapsedString.c_str(), 400, 500, 12, BLACK);
-			DrawCircle(playerPosition.x, playerPosition.y, 10, RED);
+		entityMenager.draw();
 		EndDrawing();
 	}
 	CloseWindow();

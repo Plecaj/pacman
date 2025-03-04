@@ -1,16 +1,11 @@
 #pragma once
 
-enum class Direction { 
-    None, 
-    Up, Down, 
-    Left, 
-    Right 
-};
+#include "../utils/direction.h"
 
 class InputHandler {
 public:
     InputHandler();
-    Direction GetDirection();
+    Direction getDirection();
 
 private:
     Direction m_lastDirection;
