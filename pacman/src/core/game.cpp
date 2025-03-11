@@ -19,8 +19,8 @@
 
 void Game::run()
 {
-	m_WINDOW_WIDTH = 960;
-	m_WINDOW_HEIGHT = 720;
+	m_WINDOW_WIDTH = 630;
+	m_WINDOW_HEIGHT = 750;
 	InitWindow(m_WINDOW_WIDTH, m_WINDOW_HEIGHT, "Pacman");
 
 	SetTargetFPS(60);
@@ -28,16 +28,19 @@ void Game::run()
 	InputHandler inputHandler;
 	EntityMenager entityMenager;
 
+	Map map("assets/other/map.png");
+
 	Vector2 startPosition = { 400.0f, 300.0f };
 	Vector2 startDirection = { 1.0f, 0.0f };
-	Pacman pacman(startPosition, startDirection, 2.0f, &inputHandler);
+	Pacman pacman(startPosition, startDirection, 2.0f, &inputHandler, &map);
 
 	entityMenager.addEntity(&pacman);
 
 	while (!WindowShouldClose()) {
 		entityMenager.update();
-		ClearBackground(WHITE);
+		ClearBackground(BLACK);
 		BeginDrawing();
+		map.draw();
 		entityMenager.draw();
 		EndDrawing();
 	}

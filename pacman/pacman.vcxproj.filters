@@ -36,6 +36,7 @@
     <ClInclude Include="src\utils\timer.h">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="src\map\map.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\entityMenager.cpp">
@@ -57,5 +58,6 @@
     <ClCompile Include="src\utils\timer.cpp">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="src\map\map.cpp" />
   </ItemGroup>
 </Project>

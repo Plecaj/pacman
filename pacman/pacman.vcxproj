@@ -101,6 +101,7 @@
     <ClInclude Include="src\entities\entity.h" />
     <ClInclude Include="src\entities\ghosts.h" />
     <ClInclude Include="src\entities\pacman.h" />
+    <ClInclude Include="src\map\map.h" />
     <ClInclude Include="src\utils\direction.h" />
     <ClInclude Include="src\utils\timer.h" />
   </ItemGroup>
@@ -111,6 +112,7 @@
     <ClCompile Include="src\entities\ghosts.cpp" />
     <ClCompile Include="src\entities\pacman.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\map\map.cpp" />
     <ClCompile Include="src\utils\timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

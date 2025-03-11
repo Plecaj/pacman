@@ -9,8 +9,8 @@ public:
     }
 
     virtual void update() {
-        m_position.x += m_velocity.x * m_speed;
-        m_position.y += m_velocity.y * m_speed;
+        m_position.x += m_velocity.x;
+        m_position.y += m_velocity.y;
     }
 
     virtual void draw() const = 0;
