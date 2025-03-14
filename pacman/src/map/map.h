@@ -7,13 +7,15 @@
 enum class MapField {
 	Empty,
 	Wall,
+	Path,
 };
 
 class Map {
 public:
 	Map(const char* imagePath);
-	bool isWall(Vector2 position, Vector2 size) const;
+	bool isPath(Vector2 position) const;
 	void draw() const;
+	int getTileSize() const { return m_tileSize; };
 private:
 	void loadMapFromImage(const char* imagePath);
 private:

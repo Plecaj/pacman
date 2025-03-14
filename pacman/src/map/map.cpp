@@ -12,20 +12,15 @@ Map::Map(const char* imagePath){
 }
 
 
-bool Map::isWall(Vector2 position, Vector2 size) const {
-	int colStart = (int)position.x / m_tileSize;
-	int rowStart = (int)position.y / m_tileSize;
-	int colEnd = (int)(position.x + size.x) / m_tileSize;
-	int rowEnd = (int)(position.y + size.y) / m_tileSize;
+bool Map::isPath(Vector2 position) const {
+	int col = (int)(position.x) / m_tileSize;
+	int row = (int)(position.y) / m_tileSize;
 
-	for (int row = rowStart; row <= rowEnd; ++row) {
-		for (int col = colStart; col <= colEnd; ++col) {
-			if ((row < 0 || row >= m_mapGridLayout.size()) || (col < 0 || col >= m_mapGridLayout[0].size()) || m_mapGridLayout[row][col] == MapField::Wall) {
-				return true;
-			}
-		}
+	if (row < 0 || row >= m_mapGridLayout.size() || col < 0 || col >= m_mapGridLayout[0].size()) {
+		return false;
 	}
-	return false;
+
+	return m_mapGridLayout[row][col] == MapField::Path;
 }
 
 void Map::draw() const {
@@ -33,6 +28,9 @@ void Map::draw() const {
 		for (int col = 0; col < m_mapGridLayout[row].size(); ++col) {
 			if (m_mapGridLayout[row][col] == MapField::Wall) {
 				DrawRectangleLines(col * m_tileSize, row * m_tileSize, m_tileSize, m_tileSize, BLUE);
+			}
+			else if (m_mapGridLayout[row][col] == MapField::Path) {
+				DrawRectangle(col * m_tileSize, row * m_tileSize, m_tileSize, m_tileSize, WHITE);
 			}
 		}
 	}
@@ -56,6 +54,9 @@ void Map::loadMapFromImage(const char* imagePath) {
 			Color pixelColor = pixels[row * mapImage.width + col];
 			if (pixelColor.r == 0 && pixelColor.g == 0 && pixelColor.b == 0) {
 				m_mapGridLayout[row][col] = MapField::Empty;
+			}
+			else if (pixelColor.r == 255 && pixelColor.g == 255 && pixelColor.b == 255) {
+				m_mapGridLayout[row][col] = MapField::Path;
 			}
 			else {
 				m_mapGridLayout[row][col] = MapField::Wall;

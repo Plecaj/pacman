@@ -7,6 +7,9 @@
     <Filter Include="entities">
       <UniqueIdentifier>{AA3F76DB-960C-D1E6-BF25-BF8EAB510675}</UniqueIdentifier>
     </Filter>
+    <Filter Include="map">
+      <UniqueIdentifier>{838F880B-EF98-887C-7814-9F7CE41C947C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="utils">
       <UniqueIdentifier>{169C8510-82B0-ADC1-4B32-5121B705AAF2}</UniqueIdentifier>
     </Filter>
@@ -30,13 +33,15 @@
     <ClInclude Include="src\entities\pacman.h">
       <Filter>entities</Filter>
     </ClInclude>
+    <ClInclude Include="src\map\map.h">
+      <Filter>map</Filter>
+    </ClInclude>
     <ClInclude Include="src\utils\direction.h">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\timer.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\map\map.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\entityMenager.cpp">
@@ -55,9 +60,11 @@
       <Filter>entities</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\map\map.cpp">
+      <Filter>map</Filter>
+    </ClCompile>
     <ClCompile Include="src\utils\timer.cpp">
       <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="src\map\map.cpp" />
   </ItemGroup>
 </Project>

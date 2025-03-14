@@ -30,7 +30,7 @@ void Game::run()
 
 	Map map("assets/other/map.png");
 
-	Vector2 startPosition = { 400.0f, 300.0f };
+	Vector2 startPosition = { 415.0f, 310.0f };
 	Vector2 startDirection = { 1.0f, 0.0f };
 	Pacman pacman(startPosition, startDirection, 2.0f, &inputHandler, &map);
 
