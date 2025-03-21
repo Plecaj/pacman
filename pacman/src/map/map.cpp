@@ -13,8 +13,9 @@ Map::Map(const char* imagePath){
 
 
 bool Map::isPath(Vector2 position) const {
-	int col = (int)(position.x) / m_tileSize;
-	int row = (int)(position.y) / m_tileSize;
+	int col = int(position.x) / m_tileSize;
+	int row = int(position.y / m_tileSize);
+
 
 	if (row < 0 || row >= m_mapGridLayout.size() || col < 0 || col >= m_mapGridLayout[0].size()) {
 		return false;
@@ -27,10 +28,7 @@ void Map::draw() const {
 	for (int row = 0; row < m_mapGridLayout.size(); ++row) {
 		for (int col = 0; col < m_mapGridLayout[row].size(); ++col) {
 			if (m_mapGridLayout[row][col] == MapField::Wall) {
-				DrawRectangleLines(col * m_tileSize, row * m_tileSize, m_tileSize, m_tileSize, BLUE);
-			}
-			else if (m_mapGridLayout[row][col] == MapField::Path) {
-				DrawRectangle(col * m_tileSize, row * m_tileSize, m_tileSize, m_tileSize, WHITE);
+				DrawRectangle(col * m_tileSize, row * m_tileSize, m_tileSize, m_tileSize, BLUE);
 			}
 		}
 	}

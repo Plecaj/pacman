@@ -17,12 +17,14 @@ public:
 	void draw() const override;
 	void setVelocity();
 private:
+	Vector2 getValidVelocity(Direction direction);
+private:
 	int m_lives;
 	int m_score;
 	bool m_isInPowerMode;
 	Vector2 m_startPosition;
 	std::unordered_map<Direction, std::vector<Texture2D>> m_textures;
-	const float m_SCALE_FACTOR = 2.3f;
+	const float m_SCALE_FACTOR = 2.0f;
 	float m_animationSpeed; 
 	int m_frameCounter; 
 	InputHandler* m_inputHandler;

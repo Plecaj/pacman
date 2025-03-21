@@ -16,6 +16,7 @@ public:
 	bool isPath(Vector2 position) const;
 	void draw() const;
 	int getTileSize() const { return m_tileSize; };
+	int getMapSize() const { return m_mapSize; };
 private:
 	void loadMapFromImage(const char* imagePath);
 private:

@@ -38,52 +38,41 @@ void Pacman::draw() const {
 }
 
 void Pacman::setVelocity() {
-    auto direction = m_inputHandler->getDirection();
-    Vector2 nextVelocity = { 0, 0 };
+    Direction queuedDirection = m_inputHandler->getQueuedDirection();
 
-    switch (direction) {
-    case Direction::Left:
-        nextVelocity = { -m_speed, 0 };
-        break;
-    case Direction::Right:
-        nextVelocity = { m_speed, 0 };
-        break;
-    case Direction::Up:
-        nextVelocity = { 0, -m_speed };
-        break;
-    case Direction::Down:
-        nextVelocity = { 0, m_speed };
-        break;
+    Vector2 queuedVelocity = getValidVelocity(queuedDirection);
+    if (queuedVelocity.x != 0 || queuedVelocity.y != 0) {
+        m_velocity = queuedVelocity;
+        m_inputHandler->setDirection(queuedDirection);
+        return;
     }
 
-    Vector2 nextPosition = { m_position.x + nextVelocity.x, m_position.y + nextVelocity.y };
-    if (m_map && m_map->isPath(nextPosition)) {
-        m_velocity = nextVelocity;
-        m_inputHandler->setQueuedDirection(direction);
+    Direction currentDirection = m_inputHandler->getDirection();
+
+    Vector2 currentVelocity = getValidVelocity(currentDirection);
+    if (currentVelocity.x != 0 || currentVelocity.y != 0) {
+        m_velocity = currentVelocity;
     }
     else {
-        direction = m_inputHandler->getQueuedDirection();
-        switch (direction) {
-        case Direction::Left:
-            nextVelocity = { -m_speed, 0 };
-            break;
-        case Direction::Right:
-            nextVelocity = { m_speed, 0 };
-            break;
-        case Direction::Up:
-            nextVelocity = { 0, -m_speed };
-            break;
-        case Direction::Down:
-            nextVelocity = { 0, m_speed };
-            break;
-        }
-
-        nextPosition = { m_position.x + nextVelocity.x, m_position.y + nextVelocity.y };
-        if (m_map && m_map->isPath(nextPosition)) {
-            m_velocity = nextVelocity;
-        }
-        else {
-            m_velocity = { 0, 0 };
-        }
+        m_velocity = { 0, 0 };  
     }
+}
+
+Vector2 Pacman::getValidVelocity(Direction direction) {
+    Vector2 velocity = { 0, 0 };
+
+    switch (direction) {
+        case Direction::Left:  velocity = { -m_speed, 0 }; break;
+        case Direction::Right: velocity = { m_speed, 0 }; break;
+        case Direction::Up:    velocity = { 0, -m_speed }; break;
+        case Direction::Down:  velocity = { 0, m_speed }; break;
+    }
+
+    Vector2 nextPosition = { m_position.x + velocity.x, m_position.y + velocity.y };
+
+    if (m_map && m_map->isPath(nextPosition)) {
+        return velocity;
+    }
+
+    return { 0, 0 }; 
 }

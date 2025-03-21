@@ -99,8 +99,12 @@
     <ClInclude Include="src\core\game.h" />
     <ClInclude Include="src\core\inputHandler.h" />
     <ClInclude Include="src\entities\entity.h" />
-    <ClInclude Include="src\entities\ghosts.h" />
+    <ClInclude Include="src\entities\ghost.h" />
     <ClInclude Include="src\entities\pacman.h" />
+    <ClInclude Include="src\entities\specificGhosts\blinky.h" />
+    <ClInclude Include="src\entities\specificGhosts\clyde.h" />
+    <ClInclude Include="src\entities\specificGhosts\inky.h" />
+    <ClInclude Include="src\entities\specificGhosts\pinky.h" />
     <ClInclude Include="src\map\map.h" />
     <ClInclude Include="src\utils\direction.h" />
     <ClInclude Include="src\utils\timer.h" />
@@ -109,8 +113,12 @@
     <ClCompile Include="src\core\entityMenager.cpp" />
     <ClCompile Include="src\core\game.cpp" />
     <ClCompile Include="src\core\inputHandler.cpp" />
-    <ClCompile Include="src\entities\ghosts.cpp" />
+    <ClCompile Include="src\entities\ghost.cpp" />
     <ClCompile Include="src\entities\pacman.cpp" />
+    <ClCompile Include="src\entities\specificGhosts\blinky.cpp" />
+    <ClCompile Include="src\entities\specificGhosts\clyde.cpp" />
+    <ClCompile Include="src\entities\specificGhosts\inky.cpp" />
+    <ClCompile Include="src\entities\specificGhosts\pinky.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\map\map.cpp" />
     <ClCompile Include="src\utils\timer.cpp" />
